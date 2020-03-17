@@ -1,23 +1,13 @@
-from django.shortcuts import render
-from django.views import View
+from django.views.generic.base import TemplateView
 
 
-class MainView(View):
-    template_name = "index.html"
-
-    def get(self, request):
-        return render(request, self.template_name)
+class MainView(TemplateView):
+    template_name = "tours/index.html"
 
 
-class DepartureView(View):
-    template_name = 'departure.html'
-
-    def get(self, request, departure):
-        return render(request, self.template_name)
+class DepartureView(TemplateView):
+    template_name = 'tours/departure.html'
 
 
-class TourView(View):
-    template_name = "tour.html"
-
-    def get(self, request, tour_id):
-        return render(request, self.template_name)
+class TourView(TemplateView):
+    template_name = "tours/tour.html"
