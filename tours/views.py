@@ -1,3 +1,5 @@
+import random
+
 from django.http import Http404
 from django.views.generic.base import TemplateView
 
@@ -6,6 +8,11 @@ import tours.tours_data as tours_data
 
 class MainView(TemplateView):
     template_name = "tours/index.html"
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(MainView, self).get_context_data(*args, **kwargs)
+        context['tours'] = random.sample(tours_data.tours.items(), 6)
+        return context
 
 
 class DepartureView(TemplateView):
