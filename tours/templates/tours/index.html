@@ -20,7 +20,7 @@
           <a href="{% url 'tour' tour_id %}">
             {% if tour_data.picture %}
             <img src="{{ tour_data.picture }}" class="card-img-top img-fluid" data-test="picture"
-              style="max-height: 230px;">
+              style="height: 230px;">
             {% else %}
             <img src="https://place-hold.it/300x200" class="card-img-top img-fluid" data-test="picture">
             {% endif %}
