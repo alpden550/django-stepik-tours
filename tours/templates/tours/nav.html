@@ -6,14 +6,13 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
+        {% firstof request.resolver_match.kwargs.departure as url %}
         <ul class="navbar-nav" data-test="navigation">
-            {% with url=request.resolver_match.kwargs.departure %}
             {% for code, name in departures.items %}
                 <li class="nav-item {% if url == code %}active{% endif %}">
                     <a class="nav-link" href="{% url 'departure' code %}" data-test="navlink">{{ name }} </a>
                 </li>
             {% endfor %}
-            {% endwith %}
         </ul>
     </div>
 </nav>
