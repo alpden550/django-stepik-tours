@@ -1,4 +1,7 @@
+from django.http import Http404
 from django.views.generic.base import TemplateView
+
+import tours.tours_data as tours_data
 
 
 class MainView(TemplateView):
@@ -11,3 +14,12 @@ class DepartureView(TemplateView):
 
 class TourView(TemplateView):
     template_name = "tours/tour.html"
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(TourView, self).get_context_data(*args, **kwargs)
+        tour = tours_data.tours.get(context['tour_id'])
+        if tour is None:
+            raise Http404
+        context['tour'] = tour
+        context['departure'] = tours_data.departures.get(tour['departure']).split()[-1]
+        return context
