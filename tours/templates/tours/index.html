@@ -55,7 +55,7 @@
       {% for tour_id, tour_data in tours %}
         <div class="col-4" data-test="card">
           <div class="card mb-3">
-            <a href="{% url 'tours:tour' tour_id %}">
+            <a href="{% url 'tour' tour_id %}">
               {% if tour_data.picture %}
                 <img src="{{ tour_data.picture }}" class="card-img-top img-fluid" data-test="picture" style="max-height: 230px;">
               {% else %}
@@ -65,7 +65,7 @@
             <div class="card-body">
               <h5 class="card-title">{{ tour_data.title }} {{ tour_data.stars }} ★</h5>
               <p class="card-text">{{ tour_data.description|truncatechars:90 }}</p>
-              <a href="{% url 'tours:tour' tour_id %}" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
+              <a href="{% url 'tour' tour_id %}" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
             </div>
           </div>
         </div>
