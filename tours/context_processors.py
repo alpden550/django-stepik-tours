@@ -1,4 +1,4 @@
-import tours.tours_data as tours_data
+from tours import tours_data
 
 
 def departures(request):
