@@ -3,7 +3,7 @@ import random
 from django.http import Http404
 from django.views.generic.base import TemplateView
 
-import tours.tours_data as tours_data
+from tours import tours_data
 
 
 class MainView(TemplateView):

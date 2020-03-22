@@ -14,20 +14,20 @@
 
     <div class="row mt-5" data-test="cards">
 
-      {% for tour_id, tour_data in tours %}
+      {% for tour_id, tour in tours %}
       <div class="col-4" data-test="card">
         <div class="card mb-3">
           <a href="{% url 'tour' tour_id %}">
-            {% if tour_data.picture %}
-            <img src="{{ tour_data.picture }}" class="card-img-top img-fluid" data-test="picture"
-              style="height: 230px;">
+            {% if tour.picture %}
+              <img src="{{ tour.picture }}" class="card-img-top img-fluid" data-test="picture"
+                style="height: 230px;">
             {% else %}
-            <img src="https://place-hold.it/300x200" class="card-img-top img-fluid" data-test="picture">
+              <img src="https://place-hold.it/300x200" class="card-img-top img-fluid" data-test="picture">
             {% endif %}
           </a>
           <div class="card-body">
-            <h5 class="card-title">{{ tour_data.title }} {{ tour_data.stars }} ★</h5>
-            <p class="card-text">{{ tour_data.description|truncatechars:90 }}</p>
+            <h5 class="card-title">{{ tour.title }} {{ tour.stars }} ★</h5>
+            <p class="card-text">{{ tour.description|truncatechars:90 }}</p>
             <a href="{% url 'tour' tour_id %}" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
           </div>
         </div>
