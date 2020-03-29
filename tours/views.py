@@ -33,8 +33,10 @@ class DepartureView(TemplateView):
 
         context['tours'] = tours
         context['departure'] = tours_data.departures.get(departure).split()[-1]
-        context['tours_prices'] = sorted([tour['price'] for tour in tours.values()])
-        context['tours_nights'] = sorted([tour['nights'] for tour in tours.values()])
+        tours_prices = sorted([tour['price'] for tour in tours.values()])
+        tours_nights = sorted([tour['nights'] for tour in tours.values()])
+        context['price_min'], context['price_max'] = tours_prices[0], tours_prices[-1]
+        context['night_min'], context['night_max'] = tours_nights[0], tours_nights[-1]
         return context
 
 

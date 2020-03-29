@@ -6,10 +6,10 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        {% firstof request.resolver_match.kwargs.departure as endpoint %}
         <ul class="navbar-nav" data-test="navigation">
             {% for code, name in departures.items %}
-                <li class="nav-item {% if endpoint == code %}active{% endif %}">
+                {% url 'departure' code as endpoint %}
+                <li class="nav-item {% if endpoint == request.path %}active{% endif %}">
                     <a class="nav-link" href="{% url 'departure' code %}" data-test="navlink">{{ name }} </a>
                 </li>
             {% endfor %}
