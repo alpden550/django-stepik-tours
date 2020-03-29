@@ -32,3 +32,9 @@ Run local server
 ```bash
 python manage.py runserver
 ```
+
+Or use gunicorn:
+
+```bash
+gunicorn stepiktours.wsgi
+```
